@@ -1,0 +1,85 @@
+/* src/styles/principios.css */
+
+.principios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 40px;
+  }
+  
+  .principio {
+    flex: 1 1 calc(33% - 40px);
+    max-width: calc(33% - 40px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+  }
+  
+  .principio:hover {
+    transform: scale(1.05);
+  }
+  
+  .principio img {
+    max-width: 100%;
+    height: 350px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .principios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.principio {
+    margin: 10px;
+    flex: 1 1 calc(33.333% - 40px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.formulario {
+    margin-top: 50px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.formulario .form-group {
+    margin-bottom: 15px;
+}
+.formulario label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.formulario input,
+.formulario select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formulario button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.formulario button:hover {
+    background-color: #0056b3;
+}

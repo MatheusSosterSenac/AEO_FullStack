@@ -1,56 +1,258 @@
-import React from "react";
-import { Card } from "react-bootstrap";
-import Form from "../layout/Form";  // Importando o componente Form
-import "../styles/principios.css";
+import React, { useState, useEffect } from "react";
+import { Card, Button, Container, Row, Col } from "react-bootstrap";
+import "../../src/styles/react.css";
+import routerLogo from './imagem.png';
 
-const PrincipiosCard = () => {
-    const principios = [
-        {
-            titulo: "Propriedade Privada",
-            descricao: "A propriedade privada é um dos pilares do livre mercado, garantindo que indivíduos possam controlar e beneficiar-se de seus próprios recursos e bens.",
-            url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyJis2Hx1-jZycF5rK8NJLWevQfKW70fQkOA&s",
-        },
-        {
-            titulo: "Liberdade de Troca",
-            descricao: "A liberdade de troca permite que indivíduos negociem livremente bens e serviços, levando a uma alocação eficiente dos recursos.",
-            url: "https://media.licdn.com/dms/image/C4D12AQHkMGrzcK8ukQ/article-cover_image-shrink_600_2000/0/1645194839160?e=2147483647&v=beta&t=_6Gwu_w-cOpLQ7nZ0t1MjK3HSYbql7VVrmTXX7x8BNs",
-        },
-        {
-            titulo: "Competição",
-            descricao: "A competição entre empresas promove a inovação e a eficiência, resultando em melhores produtos e serviços para os consumidores.",
-            url: "https://www.infoescola.com/wp-content/uploads/2008/06/competi%C3%A7%C3%A3o_27598678.jpg",
-        },
-        {
-            titulo: "Preços Determinados pelo Mercado",
-            descricao: "Os preços são determinados pela oferta e demanda, refletindo o valor real dos bens e serviços sem intervenção externa.",
-            url: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwCncxeuVLGd7dlE0a5xKhIwYTjxtNae2S9MUeU4UuZDJW1MyOgOG7mjgfAhhLxHYQ7mNL_kQ_7FpOxyIVRSYAfx0yH66ZhxoytZbZXpDidLNyBdXaO2nTDbKbW4cftMkGaAWGvOql_iI/s1600/dema.jpg",
-        },
-        {
-            titulo: "Empreendedorismo",
-            descricao: "O empreendedorismo incentiva a criação de novos negócios e soluções, impulsionando o crescimento econômico e a inovação.",
-            url: "https://classic.exame.com/wp-content/uploads/2016/09/size_960_16_9_obstaculos-sucesso3.jpg?quality=70&strip=info&w=960",
-        },
-        {
-            titulo: "Responsabilidade Individual",
-            descricao: "No livre mercado, os indivíduos são responsáveis por suas próprias ações econômicas, incentivando a tomada de decisões conscientes.",
-            url: "https://media.licdn.com/dms/image/D5612AQFlpCkJR_OkiQ/article-cover_image-shrink_600_2000/0/1677869887465?e=2147483647&v=beta&t=yDOh1e8ziykkCu-LgmujEdVyuPj3R0StUqG0ydEn3ps",
-        }
-    ];
+const ContadorInterativo = () => {
+    const [contador, setContador] = useState(0);
 
     return (
-        <div className="principios">
-            {principios.map((principio, index) => (
-                <Card key={index} className="principio">
-                    <Card.Img variant="top" src={principio.url} alt={principio.titulo} />
-                    <Card.Body>
-                        <Card.Title>{principio.titulo}</Card.Title>
-                        <Card.Text>{principio.descricao}</Card.Text>
-                    </Card.Body>
-                </Card>
-            ))}
-            <Form />
+        <div>
+            <p>Contador: <strong>{contador}</strong></p>
+            <Button variant="primary" onClick={() => setContador(contador + 1)}>
+                Incrementar
+            </Button>
         </div>
     );
 };
 
-export default PrincipiosCard;
+const ContadorComEfeito = () => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        document.title = `Você clicou ${count} vezes`;
+    }, [count]); // O efeito será executado sempre que "count" mudar.
+
+    return (
+        <div>
+            <p>Você clicou {count} vezes</p>
+            <Button variant="secondary" onClick={() => setCount(count + 1)}>
+                Clique aqui
+            </Button>
+        </div>
+    );
+};
+
+const UserStateExample = () => {
+    const [user, setUser] = useState({ name: 'John', age: 30 });
+
+    const handleClick = () => {
+        setUser({ ...user, age: user.age + 1 }); // Atualiza a idade
+    };
+
+    return (
+        <div>
+            <p>Name: {user.name}</p>
+            <p>Age: {user.age}</p>
+            <Button variant="info" onClick={handleClick}>Increase Age</Button>
+        </div>
+    );
+};
+
+const JSXExample = () => {
+    function formatName(user) {
+        return user.firstName + ' ' + user.lastName;
+    }
+
+    const user = {
+        firstName: 'Satoshi',
+        lastName: 'Nakamoto'
+    };
+
+    const element = (
+        <h1>
+            Hello, {formatName(user)}!
+        </h1>
+    );
+
+    return element;
+};
+
+const ReactExplicativo = () => {
+    // Tópicos explicativos sobre React
+    const topicos = [
+        {
+            titulo: "Uso de Hooks - useState",
+            descricao: `O Hook **useState** permite gerenciar o estado local de um componente funcional. Ele é útil quando precisamos manter e atualizar dados como números, textos ou objetos.`,
+            exemplo: `
+function App() {
+    const [user, setUser] = useState({ name: 'John', age: 30 });
+
+    const handleClick = () => {
+        setUser({ ...user, age: user.age + 1 });
+    };
+
+    return (
+        <div>
+            <p>Name: {user.name}</p>
+            <p>Age: {user.age}</p>
+            <button onClick={handleClick}>Increase Age</button>
+        </div>
+    );
+}
+            `,
+        },
+        {
+            titulo: "Uso de Hooks - useEffect",
+            descricao: `O Hook **useEffect** permite realizar efeitos colaterais em componentes funcionais, como atualizar o título da página ou fazer chamadas para APIs.`,
+            exemplo: `
+import { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = \`Você clicou \${count} vezes\`;
+  });
+
+  return (
+    <div>
+      <p>Você clicou {count} vezes</p>
+      <button onClick={() => setCount(count + 1)}>Clique aqui</button>
+    </div>
+  );
+}
+            `,
+        },
+        {
+            titulo: "JSX",
+            descricao: `O JSX permite que você escreva código HTML e JavaScript juntos. Ele transforma a sintaxe de HTML em JavaScript, permitindo embutir expressões JavaScript diretamente no JSX.`,
+            exemplo: `
+function formatName(user) {
+  return user.firstName + ' ' + user.lastName;
+}
+
+const user = {
+  firstName: 'Satoshi',
+  lastName: 'Nakamoto'
+};
+
+const element = (
+  <h1>
+    Hello, {formatName(user)}!
+  </h1>
+);
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+            `,
+        },
+        {
+            titulo: "React Router DOM",
+            descricao: `O React Router DOM é uma biblioteca essencial para navegação em aplicações React, criando Single Page Applications (SPAs).`,
+            exemplo: `
+           import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+           
+           function App() {
+            return (
+            <BrowserRouter>
+            <nav>
+            <Link to="/">Home</Link>
+            <Link to="/react">React</Link>
+            </nav>
+            <Routes>
+            <Route path="/" element={<h1>Página Inicial</h1>} />
+            <Route path="/react" element={<h1>React</h1>} />
+            </Routes>
+            </BrowserRouter>
+            );
+           }
+            `,
+            imagem: routerLogo, 
+        },
+        {
+            titulo: "Gerenciamento de Estado Global",
+            descricao: `
+              O React oferece duas opções principais para gerenciamento de estado global:
+              - Context API: Abordagem nativa, ideal para projetos pequenos a médios.
+              - Redux: Biblioteca externa, projetada para aplicações maiores.
+              
+              O princípio "Um único ponto da verdade" serve como uma solução para armazenar informações em um único lugar, chamado store. 
+              Qualquer acesso aos dados armazenados na aplicação deve ser feito através dele. 
+              Quando um determinado dado é atualizado, uma notificação é enviada a todos os componentes inscritos para receber essa informação.
+            `,
+            exemplo: `
+              import { createContext, useContext, useState } from 'react';
+      
+              const GlobalContext = createContext();
+      
+              function AppProvider({ children }) {
+                const [estado, setEstado] = useState("Valor Inicial");
+      
+                return (
+                  <GlobalContext.Provider value={{ estado, setEstado }}>
+                    {children}
+                  </GlobalContext.Provider>
+                );
+              }
+      
+              function Componente() {
+                const { estado, setEstado } = useContext(GlobalContext);
+      
+                return (
+                  <div>
+                    <p>Estado: {estado}</p>
+                    <button onClick={() => setEstado("Novo Valor")}>Atualizar</button>
+                  </div>
+                );
+              }
+      
+              function App() {
+                return (
+                  <AppProvider>
+                    <Componente />
+                  </AppProvider>
+                );
+              }
+            `,
+          },
+    ];
+
+    return (
+        <Container className="react-explicativo">
+            <h1 className="text-center my-4">Guia React: Principais Conceitos</h1>
+            <Row>
+                {topicos.map((topico, index) => (
+                    <Col md={6} key={index} className="mb-4">
+                        <Card className="topico shadow-sm">
+                            <Card.Body>
+                                <Card.Title>{topico.titulo}</Card.Title>
+                                <Card.Text>{topico.descricao}</Card.Text>
+                                {topico.titulo === "JSX" && (
+                                    <div className="interativo my-3">
+                                        <h5>Exemplo:</h5>
+                                        <JSXExample />
+                                    </div>
+                                )}
+                                {topico.titulo === "Uso de Hooks - useState" && (
+                                    <div className="interativo my-3">
+                                        <h5>Exemplo:</h5>
+                                        <UserStateExample />
+                                    </div>
+                                )}
+                                {topico.titulo === "Uso de Hooks - useEffect" && (
+                                    <div className="interativo my-3">
+                                        <h5>Exemplo:</h5>
+                                        <ContadorComEfeito />
+                                    </div>
+                                )}
+                                {topico.titulo === "React Router DOM" && (
+                                <div className="interativo my-3">
+                                <h5>Exemplo:</h5>
+                                <p>Endereço para a página do react</p> 
+                                <img src={topico.imagem} alt="Logo React Router DOM" className="img-fluid" />
+                                </div>
+                                )}
+                                <pre className="codigo">{topico.exemplo}</pre>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+        </Container>
+    );
+};
+
+export default ReactExplicativo;

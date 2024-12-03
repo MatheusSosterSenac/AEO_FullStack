@@ -1,0 +1,26 @@
+.react-explicativo {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.topico {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+}
+
+.topico .codigo {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+}
+
+.interativo {
+    background: #f1f1f1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}

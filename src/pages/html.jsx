@@ -670,7 +670,7 @@ console.log(pessoa.nome); // João`}
         <div className="example">
           <code>function</code>: Declaração de funções.<br />
           <code>const funcao = function() {}</code>: Expressão de função.<br />
-          <code>const funcaoArrow = () => {}</code>: Arrow function.
+          <code>const funcaoArrow = () = {}</code>: Arrow function.
         </div>
         <div className="code-example">
           <pre>
